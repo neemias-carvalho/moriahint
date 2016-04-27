@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Insert title here</title>
+</h:head>
+<body>
+	<h:form>
+		<p:menubar>
+			<f:facet name="options">
+				<p:commandButton value="Home" ajax="false"
+					action="#{MBean.redirectRecursos()}" styleClass="ui-priority-primary" />
+				<p:commandButton type="button" value="Sair" icon="ui-icon-extlink" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+</body>
+</html>

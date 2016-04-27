@@ -5,11 +5,26 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<title>Sistema de Integração Moriah</title>
+	<title>Sistema de Integração Moriah</title>
+	<style type="text/css">
+#painel {
+	font-family: geneva, arial, helvetica, sans-serif;
+	font-size: 100%;
+	margin-top: 220px;
+	margin-left: 500px;
+	margin-right: 500px;
+	text-align: center;
+}
+</style>
 </h:head>
 <body>
-	<h:form id="botão">
-		<p:commandButton value="Listar OS" ajax="false" action="#{MBean.addOSNaListaPorCliente()}" styleClass="ui-priority-primary" update="dataTableList"/>
-	</h:form>
+	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
+	<p:panel id="painel">
+		<h:form id="botão">
+			<p:commandButton value="Listar OS" ajax="false"
+				action="#{MBean.addOSNaListaPorCliente()}"
+				styleClass="ui-priority-primary" update="dataTableList" />
+		</h:form>
+	</p:panel>
 </body>
 </html>

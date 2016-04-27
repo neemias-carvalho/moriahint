@@ -4,10 +4,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<title>Sistema de Integração Moriah</title>
+	<title>Sistema de Integração Moriah</title>
+	<style type="text/css">
+#formulário {
+	margin-top: 20px;
+}
+</style>
 </h:head>
 <h:body>
-	<h:form>
+	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
+	<h:form id="formulário">
 		<p:dataTable id="dataTableList" var="sza" value="#{MBean.getList()}">
 			<p:column headerText="Data do serviço">
 				<h:outputText value="#{sza.ZA_DTINI}" />

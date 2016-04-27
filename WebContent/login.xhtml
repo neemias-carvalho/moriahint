@@ -6,16 +6,27 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Sistema de Integração Moriah</title>
+	<style type="text/css">
+body {
+	font-family: geneva, arial, helvetica, sans-serif;
+	font-size: 100%;
+	margin-top: 220px;
+	margin-left: 500px;
+	margin-right: 500px;
+}
+</style>
 </h:head>
 <body>
-	<f:view>
+	<p:panel header="Digite o CNPJ e o código.">
 		<h:form id="login">
-			<h:panelGrid columns="2">
-				<h:outputText value="Código:" />
-				<p:inputText value="#{MBean.a1_COD}" />
-				<p:commandButton value="Entrar" action="#{MBean.logar()}" />
+			<h:panelGrid columns="1">
+				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99"/>
+				<p:password id="codigo" placeholder="Código"
+					value="#{MBean.a1_COD}"/>	
+				<p:commandButton update="checador" value="Entrar" action="#{MBean.logar()}" />
+				<h:outputText id="checador" value="#{MBean.resultado}"/>
 			</h:panelGrid>
 		</h:form>
-	</f:view>
+	</p:panel>
 </body>
 </html>
