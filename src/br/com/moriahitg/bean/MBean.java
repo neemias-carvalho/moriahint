@@ -25,10 +25,6 @@ public class MBean implements Serializable {
 	SA1990 sa1 = new SA1990();
 	String A1_COD, resultado;
 
-	public String redirectRecursos() {
-		return "/recursos.xhtml?faces-redirect=true";
-	}
-
 	public String logar() {
 		resultado = "";
 		sa1 = sa1dao.getCliente(A1_COD);
@@ -40,11 +36,23 @@ public class MBean implements Serializable {
 		return resultado;
 	}
 
+	public String redirectRecursos() {
+		return "/recursos.xhtml?faces-redirect=true";
+	}
+	
 	@SuppressWarnings("unchecked")
 	public String addOSNaListaPorCliente() {
 		SZA990DAO szadao = new SZA990DAO();
 		list = szadao.getOSPorCliente(sa1.getA1_COD()); // sa1.getA1_COD();
 		return "/listaDeOSs.xhtml?faces-redirect=true";
+	}
+	
+	public String deslogar() {
+		sa1 = new SA1990();
+		list = new ArrayList<>();
+		sa1dao = new SA1990DAO();
+		resultado = "";
+		return "/login.xhtml?faces-redirect=true";
 	}
 
 	public List<SZA990> getList() {

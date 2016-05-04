@@ -13,7 +13,8 @@
 			<f:facet name="options">
 				<p:commandButton value="Home" ajax="false"
 					action="#{MBean.redirectRecursos()}" styleClass="ui-priority-primary" />
-				<p:commandButton type="button" value="Sair" icon="ui-icon-extlink" />
+				<p:commandButton value="Sair" ajax="false"
+					action="#{MBean.deslogar()}" styleClass="ui-priority-primary" />
 			</f:facet>
 		</p:menubar>
 	</h:form>

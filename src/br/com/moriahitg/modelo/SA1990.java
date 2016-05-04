@@ -259,10 +259,12 @@ public class SA1990 implements Serializable {
 		A1_ENDENT = a1_ENDENT;
 	}
 	
+	@Id
 	public String getA1_CGC() {
 		return A1_CGC;
 	}
 	
+	@Id
 	public void setA1_CGC(String a1_CGC) {
 		A1_CGC = a1_CGC;
 	}

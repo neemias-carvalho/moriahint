@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import br.com.moriahitg.datasPattern.PadraoDeDatas;
+
 @Entity
 public class SZA990 implements Serializable {
 	
@@ -16,6 +18,8 @@ public class SZA990 implements Serializable {
 	@Id
 	public String ZA_NUM, ZA_DTINI, ZA_TIPO, ZA_CLIENTE, ZA_LOJA, ZA_NOMCLI, ZA_CODFUN, ZA_NOMFUNC, ZA_EMISSAO;
 	
+	PadraoDeDatas pdd = new PadraoDeDatas();
+	
 	@Id
 	public String getZA_NUM() {
 		return ZA_NUM;
@@ -26,9 +30,10 @@ public class SZA990 implements Serializable {
 		ZA_NUM = zA_NUM;
 	}
 
+	
 	@Id
 	public String getZA_DTINI() {
-		return ZA_DTINI;
+		return pdd.converterParaDataEmPortugues(ZA_DTINI);
 	}
 
 	@Id
