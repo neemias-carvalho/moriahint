@@ -23,12 +23,13 @@ public class MBean implements Serializable {
 	List<SZA990> list = new ArrayList<SZA990>();
 	SA1990DAO sa1dao = new SA1990DAO();
 	SA1990 sa1 = new SA1990();
-	String A1_COD, resultado;
-
+	String A1_COD, A1_CGC, A1_CGCcomPontosEBarras, resultado;
+	
 	public String logar() {
+		A1_CGC = A1_CGCcomPontosEBarras.replaceAll("[-/.]", "");
 		resultado = "";
 		sa1 = sa1dao.getCliente(A1_COD);
-		if (sa1.getA1_COD().equals(A1_COD)) {
+		if (sa1.getA1_COD().equals(A1_COD) && sa1.getA1_CGC().equals(A1_CGC)) {
 			resultado = "/recursos.xhtml?faces-redirect=true";
 		} else if (sa1.getA1_COD().equals("nada")) {
 			resultado = "Login inválido";
@@ -43,7 +44,7 @@ public class MBean implements Serializable {
 	@SuppressWarnings("unchecked")
 	public String addOSNaListaPorCliente() {
 		SZA990DAO szadao = new SZA990DAO();
-		list = szadao.getOSPorCliente(sa1.getA1_COD()); // sa1.getA1_COD();
+		list = szadao.getOSPorCliente(sa1.getA1_COD());
 		return "/listaDeOSs.xhtml?faces-redirect=true";
 	}
 	
@@ -51,6 +52,7 @@ public class MBean implements Serializable {
 		sa1 = new SA1990();
 		list = new ArrayList<>();
 		sa1dao = new SA1990DAO();
+		A1_CGCcomPontosEBarras = "";
 		resultado = "";
 		return "/login.xhtml?faces-redirect=true";
 	}
@@ -78,4 +80,21 @@ public class MBean implements Serializable {
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
 	}
+	
+	public String getA1_CGC() {
+		return A1_CGC;
+	}
+
+	public void setA1_CGC(String a1_CGC) {
+		A1_CGC = a1_CGC;
+	}
+
+	public String getA1_CGCcomPontosEBarras() {
+		return A1_CGCcomPontosEBarras;
+	}
+
+	public void setA1_CGCcomPontosEBarras(String a1_CGCcomPontosEBarras) {
+		A1_CGCcomPontosEBarras = a1_CGCcomPontosEBarras;
+	}
+
 }

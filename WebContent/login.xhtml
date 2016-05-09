@@ -20,9 +20,9 @@ body {
 	<p:panel header="Digite o CNPJ e o código.">
 		<h:form id="login">
 			<h:panelGrid columns="1">
-				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99"/>
+				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99" value="#{MBean.a1_CGCcomPontosEBarras}"/>
 				<p:password id="codigo" placeholder="Código"
-					value="#{MBean.a1_COD}"/>	
+					value="#{MBean.a1_COD}"/>
 				<p:commandButton update="checador" value="Entrar" action="#{MBean.logar()}" />
 				<h:outputText id="checador" value="#{MBean.resultado}"/>
 			</h:panelGrid>
