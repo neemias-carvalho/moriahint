@@ -4,8 +4,13 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
 	version="2.2">
 	<managed-bean>
-		<managed-bean-name>MBean</managed-bean-name>
-		<managed-bean-class>br.com.moriahitg.bean.MBean</managed-bean-class>
+		<managed-bean-name>LoginBean</managed-bean-name>
+		<managed-bean-class>br.com.moriahitg.bean.LoginBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>ListaOsBean</managed-bean-name>
+		<managed-bean-class>br.com.moriahitg.bean.ListaOsBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 </faces-config>

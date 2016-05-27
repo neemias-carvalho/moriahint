@@ -1,14 +1,16 @@
 package br.com.moriahitg.teste;
 
+/*
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import br.com.moriahitg.dao.SA1990DAO;
 import br.com.moriahitg.modelo.SA1990;
+*/
 
 public class TesteSA1990DAO {
-
+/*
 	@Test
 	public void testGetEmpresa() {
 		SA1990DAO sa1dao = new SA1990DAO();
@@ -18,4 +20,5 @@ public class TesteSA1990DAO {
 		sa1 = sa1dao.getCliente("000002");
 		assertEquals(sa1.getA1_NOME(), "NEEMIAS BOY DOIDO                       ");
 	}
+*/
 }

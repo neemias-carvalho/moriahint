@@ -14,7 +14,7 @@ public class SZA990DAO {
 		Query query = null;
 		try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		query = session.createQuery("FROM SZA990 WHERE ZA_CLIENTE = :codigo ");
+		query = session.createQuery("FROM SZA990 WHERE ZA_CLIENTE = :codigo ORDER BY ZA_CODFUN, ZA_DTINI");
 		query.setParameter("codigo", A1_COD);
 		} catch (HibernateException e) {
 			e.printStackTrace();

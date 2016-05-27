@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import br.com.moriahitg.datasPattern.PadraoDeDatas;
+import br.com.moriahitg.Pattern.PadraoDeDatas;
 
 @Entity
 public class SZA990 implements Serializable {

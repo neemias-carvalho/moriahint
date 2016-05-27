@@ -1,4 +1,4 @@
-package br.com.moriahitg.datasPattern;
+package br.com.moriahitg.Pattern;
 
 public class PadraoDeDatas {
 	

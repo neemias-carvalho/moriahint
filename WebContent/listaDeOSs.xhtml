@@ -14,7 +14,7 @@
 <h:body>
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
 	<h:form id="formulário">
-		<p:dataTable id="dataTableList" var="sza" value="#{MBean.getList()}">
+		<p:dataTable id="dataTableList" var="sza" value="#{ListaOsBean.getList()}">
 			<p:column headerText="Data do serviço">
 				<h:outputText value="#{sza.ZA_DTINI}" />
 			</p:column>

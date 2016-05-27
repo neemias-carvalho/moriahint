@@ -1,5 +1,5 @@
 package br.com.moriahitg.teste;
-
+/*
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -11,9 +11,9 @@ import br.com.moriahitg.modelo.SZA990;
 
 import java.util.Iterator;
 import java.util.List;
-
+*/
 public class TesteSZA990DAO {
-	
+/*	
 	@SuppressWarnings("rawtypes")
 	@Test
 	public void testGetOsPorCliente() {
@@ -26,4 +26,5 @@ public class TesteSZA990DAO {
 		SZA990 sza = (SZA990) it.next();
 		assertEquals(sza.getZA_NOMCLI(), "NEEMIAS BOY DOIDO                                           ");
 	}
+*/
 }

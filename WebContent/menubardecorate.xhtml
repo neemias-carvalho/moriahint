@@ -12,9 +12,9 @@
 		<p:menubar>
 			<f:facet name="options">
 				<p:commandButton value="Home" ajax="false"
-					action="#{MBean.redirectRecursos()}" styleClass="ui-priority-primary" />
+					action="/recursos?faces-redirect=true" styleClass="ui-priority-primary" />
 				<p:commandButton value="Sair" ajax="false"
-					action="#{MBean.deslogar()}" styleClass="ui-priority-primary" />
+					action="#{LoginBean.deslogar()}" styleClass="ui-priority-primary" />
 			</f:facet>
 		</p:menubar>
 	</h:form>
