@@ -1,68 +1,49 @@
 package br.com.moriahitg.bean;
 
-import java.io.Serializable;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import br.com.moriahitg.dao.SA1990DAO;
-import br.com.moriahitg.dao.SZA990DAO;
 import br.com.moriahitg.modelo.SA1990;
-import br.com.moriahitg.modelo.SZA990;
+import br.com.moriahitg.Pattern.PadraoDeCampos;
 
 @ManagedBean
 @SessionScoped
-public class MBean implements Serializable {
+public class LoginBean {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	List<SZA990> list = new ArrayList<SZA990>();
+	String A1_COD, A1_CGC, A1_CGCcomPontosEBarras, resultado;
+	PadraoDeCampos pdc = new PadraoDeCampos();
 	SA1990DAO sa1dao = new SA1990DAO();
 	SA1990 sa1 = new SA1990();
-	String A1_COD, A1_CGC, A1_CGCcomPontosEBarras, resultado;
 	
+
 	public String logar() {
 		A1_CGC = A1_CGCcomPontosEBarras.replaceAll("[-/.]", "");
 		resultado = "";
-		sa1 = sa1dao.getCliente(A1_COD);
+		sa1 = sa1dao.getCliente(A1_COD, A1_CGC);
 		if (sa1.getA1_COD().equals(A1_COD) && sa1.getA1_CGC().equals(A1_CGC)) {
-			resultado = "/recursos.xhtml?faces-redirect=true";
+			FacesContext context = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
+			session.setAttribute("A1_COD", sa1.getA1_COD());
+			return "/recursos.xhtml?faces-redirect=true";
+		} else if (!pdc.formatoCorretoA1_COD(A1_COD)) {
+			resultado = "O campo de código deve possuir 6 números";
+		} else if (A1_CGC.isEmpty() || A1_COD.isEmpty()) {
+			resultado = "Preencha os espaços para se conectar";
 		} else if (sa1.getA1_COD().equals("nada")) {
 			resultado = "Login inválido";
 		}
 		return resultado;
 	}
 
-	public String redirectRecursos() {
-		return "/recursos.xhtml?faces-redirect=true";
-	}
-	
-	@SuppressWarnings("unchecked")
-	public String addOSNaListaPorCliente() {
-		SZA990DAO szadao = new SZA990DAO();
-		list = szadao.getOSPorCliente(sa1.getA1_COD());
-		return "/listaDeOSs.xhtml?faces-redirect=true";
-	}
-	
 	public String deslogar() {
-		sa1 = new SA1990();
-		list = new ArrayList<>();
-		sa1dao = new SA1990DAO();
-		A1_CGCcomPontosEBarras = "";
-		resultado = "";
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.invalidate();
 		return "/login.xhtml?faces-redirect=true";
-	}
-
-	public List<SZA990> getList() {
-		return list;
-	}
-
-	public void setList(List<SZA990> list) {
-		this.list = list;
 	}
 
 	public String getA1_COD() {
@@ -80,7 +61,7 @@ public class MBean implements Serializable {
 	public void setResultado(String resultado) {
 		this.resultado = resultado;
 	}
-	
+
 	public String getA1_CGC() {
 		return A1_CGC;
 	}
@@ -96,5 +77,4 @@ public class MBean implements Serializable {
 	public void setA1_CGCcomPontosEBarras(String a1_CGCcomPontosEBarras) {
 		A1_CGCcomPontosEBarras = a1_CGCcomPontosEBarras;
 	}
-
 }
