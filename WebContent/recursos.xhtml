@@ -19,10 +19,10 @@
 </h:head>
 <body>
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
-	<p:panel id="painel">
+	<p:panel header="Recursos" id="painel">
 		<h:form id="botão">
-			<p:commandButton value="Listar OS" ajax="false"
-				action="#{ListaOsBean.addOSNaListaPorCliente()}"
+			<p:commandButton value="Ordens de Serviço" ajax="false"
+				action="/Filtro?faces-redirect=true"
 				styleClass="ui-priority-primary" update="dataTableList" />
 		</h:form>
 	</p:panel>

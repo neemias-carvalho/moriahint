@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Sistema de Integração Moriah</title>
+	<style type="text/css">
+#painel {
+	font-family: geneva, arial, helvetica, sans-serif;
+	font-size: 100%;
+	margin-top: 220px;
+	margin-left: 300px;
+	margin-right: 300px;
+	text-align: center;
+}
+
+</style>
+</h:head>
+<body>
+	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
+	<p:panel header="Selecione como deseja as Ordens de Serviço"
+		id="painel">
+		<h:form id="form">
+			<p:panel>
+				<h:panelGrid columns="5">
+					<p:outputLabel value="Datas da OS:" />
+					<p:outputLabel for="de" value="De:" />
+					<p:calendar id="de" value="#{ListaOsBean.dataDe}"
+						mindate="01/01/10" maxdate="{ListaOsBean.getHoje()}"
+						pattern="dd/MM/yyyy">
+						<p:ajax event="dateSelect" listener="#{ListaOsBean.getDataDe}"
+							update="ate" />
+					</p:calendar>
+					<p:outputLabel for="ate" value="Até:" />
+					<p:calendar id="ate" value="#{ListaOsBean.dataAte}"
+						mindate="#{ListaOsBean.getDataDe()}"
+						maxdate="#{ListaOsBean.getHoje()}" pattern="dd/MM/yyyy" />
+				</h:panelGrid>
+			</p:panel>
+			<p:commandButton value="Listar OS" ajax="false"
+				action="#{ListaOsBean.addOSNaListaPorCliente()}"
+				styleClass="ui-priority-primary" update="dataTableList" />
+		</h:form>
+	</p:panel>
+</body>
+</html>

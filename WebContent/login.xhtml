@@ -19,11 +19,12 @@ body {
 <body>
 	<p:panel header="Digite o CNPJ e o código.">
 		<h:form id="login">
+		<p:growl id="msgs" showDetail="false" />
 			<h:panelGrid columns="1">
 				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99" value="#{LoginBean.a1_CGCcomPontosEBarras}"/>
 				<p:password id="codigo" placeholder="Código"
 					value="#{LoginBean.a1_COD}"/>
-				<p:commandButton update="checador" value="Entrar" action="#{LoginBean.logar()}" />
+				<p:commandButton update="msgs" value="Entrar" action="#{LoginBean.logar()}" />
 				<h:outputText id="checador" value="#{LoginBean.resultado}"/>
 			</h:panelGrid>
 		</h:form>

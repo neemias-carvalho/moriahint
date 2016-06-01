@@ -1,5 +1,6 @@
 package br.com.moriahitg.bean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -19,25 +20,26 @@ public class LoginBean {
 	PadraoDeCampos pdc = new PadraoDeCampos();
 	SA1990DAO sa1dao = new SA1990DAO();
 	SA1990 sa1 = new SA1990();
-	
 
 	public String logar() {
+		FacesContext fc = FacesContext.getCurrentInstance();
 		A1_CGC = A1_CGCcomPontosEBarras.replaceAll("[-/.]", "");
-		resultado = "";
 		sa1 = sa1dao.getCliente(A1_COD, A1_CGC);
 		if (sa1.getA1_COD().equals(A1_COD) && sa1.getA1_CGC().equals(A1_CGC)) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
 			session.setAttribute("A1_COD", sa1.getA1_COD());
 			return "/recursos.xhtml?faces-redirect=true";
+		}  else if (A1_CGC.isEmpty() || A1_COD.isEmpty()) {
+			fc.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Preencha os espaços para se conectar.", null));
 		} else if (!pdc.formatoCorretoA1_COD(A1_COD)) {
-			resultado = "O campo de código deve possuir 6 números";
-		} else if (A1_CGC.isEmpty() || A1_COD.isEmpty()) {
-			resultado = "Preencha os espaços para se conectar";
+			fc.addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "O campo de código deve possuir 6 dígitos.", null));
 		} else if (sa1.getA1_COD().equals("nada")) {
-			resultado = "Login inválido";
+			fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Login ou Senha inválido.", null));
 		}
-		return resultado;
+		return "";
 	}
 
 	public String deslogar() {
