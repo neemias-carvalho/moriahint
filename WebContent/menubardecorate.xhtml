@@ -11,8 +11,10 @@
 	<h:form>
 		<p:menubar>
 			<f:facet name="options">
+				<h:outputText value="Usuário: #{LoginBean.nome}" />
 				<p:commandButton value="Home" ajax="false"
-					action="/recursos?faces-redirect=true" styleClass="ui-priority-primary" />
+					action="#{ListaOsBean.zerarTudoEVoltarParaRecursos()}"
+					styleClass="ui-priority-primary" />
 				<p:commandButton value="Sair" ajax="false"
 					action="#{LoginBean.deslogar()}" styleClass="ui-priority-primary" />
 			</f:facet>

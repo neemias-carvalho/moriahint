@@ -46,4 +46,5 @@ public class PadraoDeDatas {
 		}
 		return palavrasConcatenadas;
 	}
+
 }

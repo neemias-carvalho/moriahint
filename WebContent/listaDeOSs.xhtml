@@ -15,11 +15,32 @@
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
 	<h:form id="formulário">
 		<p:dataTable id="dataTableList" var="sza" value="#{ListaOsBean.getList()}">
-			<p:column headerText="Data do serviço">
+			<p:column headerText="Data da OS">
 				<h:outputText value="#{sza.ZA_DTINI}" />
+			</p:column>
+			<p:column headerText="Tipo">
+				<h:outputText value="#{sza.ZA_TIPO}" />
 			</p:column>
 			<p:column headerText="Funcionário">
 				<h:outputText value="#{sza.ZA_NOMFUNC}" />
+			</p:column>
+			<p:column headerText="Parceiro">
+				<h:outputText value="#{sza.ZA_NOMCLI}" />
+			</p:column>
+			<p:column headerText="Hora Inicial 1">
+				<h:outputText value="#{sza.ZA_HRINI1}" />
+			</p:column>
+			<p:column headerText="Hora Final 1">
+				<h:outputText value="#{sza.ZA_HRFIM}" />
+			</p:column>
+			<p:column headerText="Hora Inicial 2">
+				<h:outputText value="#{sza.ZA_HRINI2}" />
+			</p:column>
+			<p:column headerText="Hora Final 2">
+				<h:outputText value="#{sza.ZA_HRFIM2}" />
+			</p:column>
+			<p:column headerText="Hora Total">
+				<h:outputText value="#{sza.ZA_HRTOT}" />
 			</p:column>
 		</p:dataTable>
 	</h:form>

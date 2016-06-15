@@ -11,22 +11,30 @@ body {
 	font-family: geneva, arial, helvetica, sans-serif;
 	font-size: 100%;
 	margin-top: 220px;
-	margin-left: 500px;
-	margin-right: 500px;
+	margin-left: 555px;
+	margin-right: 555px;
+	text-align: center;
 }
 </style>
 </h:head>
 <body>
 	<p:panel header="Digite o CNPJ e o código.">
 		<h:form id="login">
-		<p:growl id="msgs" showDetail="false" />
+			<p:growl id="msgs" showDetail="false" />
 			<h:panelGrid columns="1">
-				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99" value="#{LoginBean.a1_CGCcomPontosEBarras}"/>
+				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99"
+					value="#{LoginBean.a1_CGCcomPontosEBarras}" />
 				<p:password id="codigo" placeholder="Código"
-					value="#{LoginBean.a1_COD}"/>
-				<p:commandButton update="msgs" value="Entrar" action="#{LoginBean.logar()}" />
-				<h:outputText id="checador" value="#{LoginBean.resultado}"/>
+					value="#{LoginBean.a1_COD}" />
+				<p:commandButton update="msgs" value="Entrar"
+					action="#{LoginBean.logar()}">
+				</p:commandButton>
 			</h:panelGrid>
+			<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="true">
+				<h:outputText value="Carregando..." />
+			</p:dialog>
 		</h:form>
 	</p:panel>
 </body>

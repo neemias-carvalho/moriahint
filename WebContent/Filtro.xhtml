@@ -10,38 +10,58 @@
 #painel {
 	font-family: geneva, arial, helvetica, sans-serif;
 	font-size: 100%;
-	margin-top: 220px;
-	margin-left: 300px;
-	margin-right: 300px;
+	margin-top: 100px;
+	margin-left: 395px;
+	margin-right: 395px;
 	text-align: center;
 }
-
 </style>
 </h:head>
 <body>
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
-	<p:panel header="Selecione como deseja as Ordens de Serviço"
-		id="painel">
+	<p:panel id="painel">
 		<h:form id="form">
-			<p:panel>
-				<h:panelGrid columns="5">
-					<p:outputLabel value="Datas da OS:" />
-					<p:outputLabel for="de" value="De:" />
-					<p:calendar id="de" value="#{ListaOsBean.dataDe}"
-						mindate="01/01/10" maxdate="{ListaOsBean.getHoje()}"
-						pattern="dd/MM/yyyy">
-						<p:ajax event="dateSelect" listener="#{ListaOsBean.getDataDe}"
-							update="ate" />
-					</p:calendar>
-					<p:outputLabel for="ate" value="Até:" />
-					<p:calendar id="ate" value="#{ListaOsBean.dataAte}"
-						mindate="#{ListaOsBean.getDataDe()}"
-						maxdate="#{ListaOsBean.getHoje()}" pattern="dd/MM/yyyy" />
-				</h:panelGrid>
-			</p:panel>
-			<p:commandButton value="Listar OS" ajax="false"
-				action="#{ListaOsBean.addOSNaListaPorCliente()}"
-				styleClass="ui-priority-primary" update="dataTableList" />
+			<p:growl id="msgs" showDetail="false" />
+			<h:panelGrid id="painel" columns="1">
+				<p:panel header="Selecione o intervalo das ordens de serviço">
+					<h:panelGrid id="subpainel" columns="4">
+						<p:outputLabel for="de" value="De:" />
+						<p:calendar id="de" value="#{ListaOsBean.dataDe}"
+							mindate="01/01/2010" maxdate="{ListaOsBean.getHoje()}"
+							pattern="dd/MM/yyyy">
+							<p:ajax event="dateSelect" listener="#{ListaOsBean.getDataDe}"
+								update="ate" />
+						</p:calendar>
+						<p:outputLabel for="ate" value="Até:" />
+						<p:calendar id="ate" value="#{ListaOsBean.dataAte}"
+							mindate="#{ListaOsBean.getDataDe()}"
+							maxdate="#{ListaOsBean.getHoje()}" pattern="dd/MM/yyyy">
+						</p:calendar>
+					</h:panelGrid>
+				</p:panel>
+				<p:panel header="Selecione o tipo de ordem de Serviço">
+					<p:selectManyCheckbox id="grid" layout="grid"
+						value="#{ListaOsBean.ordensSelecionadas}" columns="5">
+						<f:selectItem itemLabel="Faturada" itemValue="FAT" />
+						<f:selectItem itemLabel="Orçada" itemValue="ORC" />
+						<f:selectItem itemLabel="Contrato" itemValue="CON" />
+						<f:selectItem itemLabel="Outros" itemValue="OUT" />
+						<f:selectItem itemLabel="Análise" itemValue="ANL" />
+					</p:selectManyCheckbox>
+				</p:panel>
+				<p:panel header="Selecione os funcionários">
+					<p:scrollPanel style="width:470px;height:100px">
+						<p:selectManyCheckbox id="grid2" value="#{ListaOsBean.funcionariosSelecionados}"
+						 layout="grid" columns="1">
+							<f:selectItems value="#{ListaOsBean.listDeFuncionarios}"
+								var="city" itemLabel="#{city}" itemValue="#{city}" />
+						</p:selectManyCheckbox>
+					</p:scrollPanel>
+				</p:panel>
+				<p:commandButton update="msgs" value="Listar OS" ajax="false"
+					action="#{ListaOsBean.addOSNaListaPorCliente()}"
+					styleClass="ui-priority-primary" />
+			</h:panelGrid>
 		</h:form>
 	</p:panel>
 </body>

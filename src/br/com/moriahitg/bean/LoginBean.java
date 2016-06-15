@@ -16,7 +16,7 @@ public class LoginBean {
 	/**
 	 * 
 	 */
-	String A1_COD, A1_CGC, A1_CGCcomPontosEBarras, resultado;
+	String A1_COD, A1_CGC, A1_CGCcomPontosEBarras, nome;
 	PadraoDeCampos pdc = new PadraoDeCampos();
 	SA1990DAO sa1dao = new SA1990DAO();
 	SA1990 sa1 = new SA1990();
@@ -25,6 +25,7 @@ public class LoginBean {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		A1_CGC = A1_CGCcomPontosEBarras.replaceAll("[-/.]", "");
 		sa1 = sa1dao.getCliente(A1_COD, A1_CGC);
+		nome = sa1.getA1_NOME();
 		if (sa1.getA1_COD().equals(A1_COD) && sa1.getA1_CGC().equals(A1_CGC)) {
 			FacesContext context = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) context.getExternalContext().getSession(true);
@@ -56,14 +57,6 @@ public class LoginBean {
 		A1_COD = a1_COD;
 	}
 
-	public String getResultado() {
-		return resultado;
-	}
-
-	public void setResultado(String resultado) {
-		this.resultado = resultado;
-	}
-
 	public String getA1_CGC() {
 		return A1_CGC;
 	}
@@ -78,5 +71,13 @@ public class LoginBean {
 
 	public void setA1_CGCcomPontosEBarras(String a1_CGCcomPontosEBarras) {
 		A1_CGCcomPontosEBarras = a1_CGCcomPontosEBarras;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }
