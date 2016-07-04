@@ -14,35 +14,68 @@
 <h:body>
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
 	<h:form id="formulário">
-		<p:dataTable id="dataTableList" var="sza" value="#{ListaOsBean.getList()}">
-			<p:column headerText="Data da OS">
-				<h:outputText value="#{sza.ZA_DTINI}" />
-			</p:column>
-			<p:column headerText="Tipo">
-				<h:outputText value="#{sza.ZA_TIPO}" />
-			</p:column>
-			<p:column headerText="Funcionário">
-				<h:outputText value="#{sza.ZA_NOMFUNC}" />
-			</p:column>
-			<p:column headerText="Parceiro">
-				<h:outputText value="#{sza.ZA_NOMCLI}" />
-			</p:column>
-			<p:column headerText="Hora Inicial 1">
-				<h:outputText value="#{sza.ZA_HRINI1}" />
-			</p:column>
-			<p:column headerText="Hora Final 1">
-				<h:outputText value="#{sza.ZA_HRFIM}" />
-			</p:column>
-			<p:column headerText="Hora Inicial 2">
-				<h:outputText value="#{sza.ZA_HRINI2}" />
-			</p:column>
-			<p:column headerText="Hora Final 2">
-				<h:outputText value="#{sza.ZA_HRFIM2}" />
-			</p:column>
-			<p:column headerText="Hora Total">
-				<h:outputText value="#{sza.ZA_HRTOT}" />
-			</p:column>
-		</p:dataTable>
+		<p:panelGrid columns="1">
+			<p:panel header = "Ordens de Serviço individuais">
+				<p:dataTable id="dataTableList" var="sza"
+					value="#{ListaOsBean.getList()}">
+					<p:column headerText="Data da OS">
+						<h:outputText value="#{sza.ZA_DTINI}" />
+					</p:column>
+					<p:column headerText="Tipo">
+						<h:outputText value="#{sza.ZA_TIPO}" />
+					</p:column>
+					<p:column headerText="Funcionário">
+						<h:outputText value="#{sza.ZA_NOMFUNC}" />
+					</p:column>
+					<p:column headerText="Parceiro">
+						<h:outputText value="#{sza.ZA_NOMCLI}" />
+					</p:column>
+					<p:column headerText="Hora Inicial 1">
+						<h:outputText value="#{sza.ZA_HRINI1}" />
+					</p:column>
+					<p:column headerText="Hora Final 1">
+						<h:outputText value="#{sza.ZA_HRFIM}" />
+					</p:column>
+					<p:column headerText="Translado">
+						<h:outputText value="#{sza.ZA_TRANSL}" />
+					</p:column>
+					<p:column headerText="Hora Inicial 2">
+						<h:outputText value="#{sza.ZA_HRINI2}" />
+					</p:column>
+					<p:column headerText="Hora Final 2">
+						<h:outputText value="#{sza.ZA_HRFIM2}" />
+					</p:column>
+					<p:column headerText="Hora Total">
+						<h:outputText value="#{sza.ZA_HRTOT}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+			<p:panel header = "Totais de horas por Ordem de Serviço">
+				<p:dataTable var="fun" value="#{ListaOsBean.listDeFuncionariosAux}">
+					<p:column headerText="Funcionário">
+						<h:outputText value="#{fun.AA1_NOMTEC}" />
+					</p:column>
+					<p:column headerText="Total FAT">
+						<h:outputText value="#{fun.horaTotalFAT}" />
+					</p:column>
+					<p:column headerText="Total ORC">
+						<h:outputText value="#{fun.horaTotalORC}" />
+					</p:column>
+					<p:column headerText="Total CON">
+						<h:outputText value="#{fun.horaTotalCON}" />
+					</p:column>
+					<p:column headerText="Total ANL">
+						<h:outputText value="#{fun.horaTotalANL}" />
+					</p:column>
+					<p:column headerText="Total OUT">
+						<h:outputText value="#{fun.horaTotalOUT}" />
+					</p:column>
+					<p:column headerText="Total de Horas">
+						<h:outputText value="#{fun.todasAsOss}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</p:panelGrid>
 	</h:form>
 </h:body>
 </html>

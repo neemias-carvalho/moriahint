@@ -12,7 +12,7 @@ public class AA1990DAO {
 		Query query = null;
 		try {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		query = session.createQuery("SELECT AA1_NOMTEC FROM AA1990");
+		query = session.createQuery("FROM AA1990 ORDER BY AA1_NOMTEC");
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}

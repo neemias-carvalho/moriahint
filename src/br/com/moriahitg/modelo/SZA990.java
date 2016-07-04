@@ -18,7 +18,7 @@ public class SZA990 implements Serializable {
 
 	@Id
 	public String ZA_NUM, ZA_DTINI, ZA_TIPO, ZA_CLIENTE, ZA_LOJA, ZA_NOMCLI, ZA_CODFUN, ZA_NOMFUNC, ZA_EMISSAO,
-			ZA_HRINI1, ZA_HRFIM, ZA_HRTOT1, ZA_HRINI2, ZA_HRFIM2, ZA_HRTOT2, ZA_HRTOT;
+			ZA_HRINI1, ZA_HRFIM, ZA_HRTOT1, ZA_TRANSL, ZA_HRINI2, ZA_HRFIM2, ZA_HRTOT2, ZA_HRTOT;
 
 	PadraoDeDatas pdd = new PadraoDeDatas();
 	PadraoDeHoras pdh = new PadraoDeHoras();
@@ -143,6 +143,16 @@ public class SZA990 implements Serializable {
 		ZA_HRTOT1 = zA_HRTOT1;
 	}
 	
+	@Id
+	public String getZA_TRANSL() {
+		return pdh.converterParaFormatoDeHoras(ZA_TRANSL);
+	}
+	
+	@Id
+	public void setZA_TRANSL(String zA_TRANSL) {
+		ZA_TRANSL = zA_TRANSL;
+	}
+
 	@Id
 	public String getZA_HRINI2() {
 		return pdh.converterParaFormatoDeHoras(ZA_HRINI2);
