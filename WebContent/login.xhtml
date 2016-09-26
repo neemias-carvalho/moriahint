@@ -10,11 +10,14 @@
 body {
 	font-family: geneva, arial, helvetica, sans-serif;
 	font-size: 100%;
+	width: 20%;
 	margin-top: 220px;
-	margin-left: 555px;
-	margin-right: 555px;
+	margin-left: auto;
+	margin-right: auto;
 	text-align: center;
+	background-image: url("");
 }
+
 </style>
 </h:head>
 <body>
@@ -23,9 +26,9 @@ body {
 			<p:growl id="msgs" showDetail="false" />
 			<h:panelGrid columns="1">
 				<p:inputMask placeholder="CNPJ" mask="99.999.999/9999-99"
-					value="#{LoginBean.a1_CGCcomPontosEBarras}" />
+					value="#{LoginBean.a1_CGCcomPontosEBarras}" style="width: 90%"/>
 				<p:password id="codigo" placeholder="Código"
-					value="#{LoginBean.a1_COD}" />
+					value="#{LoginBean.a1_COD}" style="width: 90%"/>
 				<p:commandButton update="msgs" value="Entrar"
 					action="#{LoginBean.logar()}">
 				</p:commandButton>

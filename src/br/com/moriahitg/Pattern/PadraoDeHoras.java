@@ -21,7 +21,7 @@ public class PadraoDeHoras {
 		}
 		return horasConcatenadas;
 	}
-
+	
 	public String somaDeHoras(String hora1, String hora2) {
 		// Inicializando Strings da hora1 (HH, MM) e hora2 (HH, MM)
 		String HHhora1 = "";

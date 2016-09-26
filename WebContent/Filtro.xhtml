@@ -10,7 +10,7 @@
 #painel {
 	font-family: geneva, arial, helvetica, sans-serif;
 	font-size: 100%;
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-left: 395px;
 	margin-right: 395px;
 	text-align: center;
@@ -40,21 +40,26 @@
 					</h:panelGrid>
 				</p:panel>
 				<p:panel header="Selecione o tipo de ordem de Serviço">
-					<p:selectManyCheckbox id="grid" layout="grid"
-						value="#{ListaOsBean.ordensSelecionadas}" columns="5">
-						<f:selectItem itemLabel="Faturada" itemValue="FAT" />
-						<f:selectItem itemLabel="Orçada" itemValue="ORC" />
-						<f:selectItem itemLabel="Contrato" itemValue="CON" />
-						<f:selectItem itemLabel="Outros" itemValue="OUT" />
-						<f:selectItem itemLabel="Análise" itemValue="ANL" />
-					</p:selectManyCheckbox>
+					<p:scrollPanel style="width:470px;height:100px">
+						<p:selectManyCheckbox id="grid" layout="grid"
+							value="#{ListaOsBean.ordensSelecionadas}" columns="1">
+							<f:selectItem itemLabel="Faturada" itemValue="FAT" />
+							<f:selectItem itemLabel="Orçada" itemValue="ORC" />
+							<f:selectItem itemLabel="Contrato" itemValue="CON" />
+							<f:selectItem itemLabel="Bonificação" itemValue="BON" />
+							<f:selectItem itemLabel="Outros" itemValue="OUT" />
+							<f:selectItem itemLabel="Análise" itemValue="ANL" />
+						</p:selectManyCheckbox>
+					</p:scrollPanel>
 				</p:panel>
 				<p:panel header="Selecione os funcionários">
 					<p:scrollPanel style="width:470px;height:100px">
-						<p:selectManyCheckbox id="grid2" value="#{ListaOsBean.funcionariosSelecionados}"
-						 layout="grid" columns="1">
+						<p:selectManyCheckbox id="grid2"
+							value="#{ListaOsBean.funcionariosSelecionados}" layout="grid"
+							columns="1">
 							<f:selectItems value="#{ListaOsBean.listDeFuncionarios}"
-								var="fun" itemLabel="#{fun.AA1_NOMTEC}" itemValue="#{fun.AA1_NOMTEC}" />
+								var="fun" itemLabel="#{fun.AA1_NOMTEC}"
+								itemValue="#{fun.AA1_NOMTEC}" />
 						</p:selectManyCheckbox>
 					</p:scrollPanel>
 				</p:panel>

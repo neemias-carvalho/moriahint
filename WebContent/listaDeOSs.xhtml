@@ -6,15 +6,14 @@
 <h:head>
 	<title>Sistema de Integração Moriah</title>
 	<style type="text/css">
-#formulário {
-	margin-top: 20px;
-}
-</style>
+	
+	</style>
 </h:head>
 <h:body>
 	<ui:decorate template="menubardecorate.xhtml"></ui:decorate>
 	<h:form id="formulário">
 		<p:panelGrid columns="1">
+		<p:commandButton id="btprint" onclick="myFunction()" value="Imprimir Relatório"/>
 			<p:panel header = "Ordens de Serviço individuais">
 				<p:dataTable id="dataTableList" var="sza"
 					value="#{ListaOsBean.getList()}">
@@ -77,5 +76,10 @@
 			</p:panel>
 		</p:panelGrid>
 	</h:form>
+	<script>
+	function myFunction() {
+	    window.print();
+	}
+	</script>
 </h:body>
 </html>

@@ -29,7 +29,7 @@ public class ListaOsBean {
 	List<AA1990> listDeFuncionarios = new ArrayList<AA1990>();
 	List<AA1990AUX> listDeFuncionariosAux = new ArrayList<AA1990AUX>();
 	String[] ordensSelecionadas, funcionariosSelecionados;
-	String[] vetorAux1 = new String[5];
+	String[] vetorAux1 = new String[6];
 	String[] vetorAux2 = new String[30];
 	Date dataDe, dataAte, hoje;
 	PadraoDeDatas pdd = new PadraoDeDatas();
@@ -54,7 +54,7 @@ public class ListaOsBean {
 			SZA990DAO szadao = new SZA990DAO();
 			listDeOSs = szadao.getOSPorCliente(a1_cod, pdd.converterDeDataPrimefacesParaDataSQL(dataDe),
 					pdd.converterDeDataPrimefacesParaDataSQL(dataAte), vetorAux1[0], vetorAux1[1], vetorAux1[2],
-					vetorAux1[3], vetorAux1[4], vetorAux2[0], vetorAux2[1], vetorAux2[2], vetorAux2[3], vetorAux2[4],
+					vetorAux1[3], vetorAux1[4], vetorAux1[5], vetorAux2[0], vetorAux2[1], vetorAux2[2], vetorAux2[3], vetorAux2[4],
 					vetorAux2[5], vetorAux2[6], vetorAux2[7], vetorAux2[8], vetorAux2[9], vetorAux2[10], vetorAux2[11],
 					vetorAux2[12], vetorAux2[13], vetorAux2[14], vetorAux2[15], vetorAux2[16], vetorAux2[17],
 					vetorAux2[18], vetorAux2[19], vetorAux2[20], vetorAux2[21], vetorAux2[22], vetorAux2[23],
@@ -130,7 +130,7 @@ public class ListaOsBean {
 	}
 
 	public String zerarTudoEVoltarParaRecursos() {
-		vetorAux1 = new String[5];
+		vetorAux1 = new String[6];
 		vetorAux2 = new String[30];
 		listDeFuncionariosAux = new ArrayList<AA1990AUX>();
 		return "/recursos?faces-redirect=true";
